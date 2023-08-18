@@ -1,0 +1,11 @@
+{
+    "downloadAFile": "Скачать файл",
+    "uploadAFile": "Загрузить файл",
+    "proceed": "Далее",
+    "attemptDownload": "Скачать",
+    "attemptUpload": "Загрузить на сервер",
+    "fileNotFound": "Файл не найден",
+    "fileFound": "Файл найден успешно",
+    "noFileUploaded": "Файл не выбран",
+    "fileCode": "Код файла"
+}

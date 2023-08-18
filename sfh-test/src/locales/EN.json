@@ -1,0 +1,11 @@
+{
+    "downloadAFile": "Download a file",
+    "uploadAFile": "Upload a file",
+    "proceed": "Proceed",
+    "attemptDownload": "Download",
+    "attemptUpload": "Upload",
+    "fileNotFound": "The file was not found",
+    "fileFound": "The file was found successfully",
+    "noFileUploaded": "No file uploaded",
+    "fileCode": "File code"
+}

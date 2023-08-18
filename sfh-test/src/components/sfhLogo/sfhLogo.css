@@ -1,0 +1,14 @@
+h1.logoTxt {
+    display: flex;
+    flex-direction: column;
+    color: rgba(236, 48, 48, 0.548);
+    font-size: 64px;
+}
+
+@media screen and (max-width: 500px) {
+    h1.logoTxt {
+        flex-direction: row;
+        justify-content: center;
+        gap: 32px;
+    }
+}

@@ -1,0 +1,13 @@
+#check-button {
+    width: 200px;
+    height: 60px;
+}
+.opacity0 {
+    opacity: 0;
+}
+.download-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
