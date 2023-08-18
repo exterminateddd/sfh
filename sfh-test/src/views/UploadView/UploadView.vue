@@ -22,6 +22,7 @@
             </div>
             <input type="submit" :value="$root.l('attemptUpload')" class="attempt-upload-button">
         </form>
+        <h1 id="filecode" v-if="uploadToServerCompleted">{{ filecode }}</h1>
     </div>
 </template>
 <script>
@@ -33,7 +34,8 @@ export default {
         return {
             uploadedFile: undefined,
             uploadToServerCompleted: false,
-            fileLifetime: 600
+            fileLifetime: 600,
+            filecode: '?/?/?/'
         }
     },
     methods: {
@@ -49,7 +51,8 @@ export default {
                     'Content-Type': 'multipart/form-data'
                 }
             }).then((resp) => {
-                console.log(resp)
+                this.uploadToServerCompleted = true;
+                this.filecode = resp.data;
             }).catch((err) => {
                 this.$root.error(err.message)
             });
