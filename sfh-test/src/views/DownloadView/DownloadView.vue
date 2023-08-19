@@ -31,15 +31,21 @@ export default {
             if (!this.fileExists) {
                 return
             }
-            get('http://'+process.env.VUE_APP_API_ROOT+':5000'+'/download_file/'+this.$route.params.code).then((resp) => {
-                let virtualLink = document.createElement('a');
-                virtualLink.href = window.URL.createObjectURL(new Blob([resp.data]));
-                const contentDisposition = resp.headers['content-disposition'];
-                const filename = contentDisposition.substring(contentDisposition.indexOf('filename=') + 9, contentDisposition.length);
-                virtualLink.download = filename;
-                virtualLink.target = '_blank';
-
-                virtualLink.click();
+            get('http://'+process.env.VUE_APP_API_ROOT+':5000'+'/download_file/'+this.$route.params.code,
+                {
+                    responseType: 'blob'
+                }).then((resp) => {
+                    let blob = resp.data
+                    console.log(blob)
+                    let virtualLink = document.createElement('a');
+                    virtualLink.href = window.URL.createObjectURL(blob);
+                    console.log(virtualLink, virtualLink.href);
+                    const contentDisposition = resp.headers['content-disposition'];
+                    const filename = contentDisposition.substring(contentDisposition.indexOf('filename=') + 9, contentDisposition.length);
+                    virtualLink.download = filename;
+                    virtualLink.target = '_blank';
+                    virtualLink.click();
+                    window.URL.revokeObjectURL(virtualLink.href)
 
             }).catch(() => {})
         }

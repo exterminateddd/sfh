@@ -35,8 +35,10 @@ def check_if_file_exists_route(code: str):
 
 @app.route('/download_file/<string:code>', methods=["GET"])
 def download_file_route(code: str):
-    extension = loads(open('./files.json', 'r+').read())[code]['extension']
+    file_data = loads(open('./files.json', 'r+').read())[code]
+    extension = file_data['extension']
     resp = make_response(send_from_directory(app.config['UPLOAD_FOLDER'], code+'.'+extension, as_attachment=True))
+    resp.mimetype = file_data['mimetype']
     resp.headers.add('foo', 'bar')
     resp.headers.add('Access-Control-Expose-Headers', 'foo, Content-Disposition')
     return resp
@@ -57,7 +59,8 @@ def upload_file_route():
     files_json[filecode] = {
         'uploaded_at': time(),
         'expires_at': time()+int(file_lifetime),
-        'extension': extension
+        'extension': extension,
+        'mimetype': uploaded_file.mimetype
     }
     open('./files.json', 'w+').write(dumps(files_json, indent=4))
 
