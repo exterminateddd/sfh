@@ -22,7 +22,7 @@ export default {
     methods: {
         checkIfFileExists() {
             console.log('checking if file with code ' + this.$route.params.code + ' exists')
-            get('http://'+process.env.VUE_APP_API_ROOT+':5000'+'/check_if_file_exists/'+this.$route.params.code).then((resp) => {
+            get('https://'+process.env.VUE_APP_API_ROOT+':5000'+'/check_if_file_exists/'+this.$route.params.code).then((resp) => {
                 this.isCheckFinished = true;
                 this.fileExists = resp.data.result;
             }).catch(() => {})
@@ -31,7 +31,7 @@ export default {
             if (!this.fileExists) {
                 return
             }
-            get('http://'+process.env.VUE_APP_API_ROOT+':5000'+'/download_file/'+this.$route.params.code,
+            get('https://'+process.env.VUE_APP_API_ROOT+':5000'+'/download_file/'+this.$route.params.code,
                 {
                     responseType: 'blob'
                 }).then((resp) => {

@@ -46,7 +46,7 @@ export default {
             const formData = new FormData();
             formData.append("file", this.uploadedFile);
             formData.append("lifetime", this.fileLifetime)
-            axios.post('http://'+process.env.VUE_APP_API_ROOT+":5000"+"/upload_file", formData, {
+            axios.post('https://'+process.env.VUE_APP_API_ROOT+":5000"+"/upload_file", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
