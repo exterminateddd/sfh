@@ -2,13 +2,15 @@ from flask import Flask, send_from_directory, jsonify, request, Response, make_r
 from flask_cors import CORS
 from json import loads, dumps
 from random import randint
-from os import path, remove
+from os import path, remove, getenv
 from time import time, sleep
 from threading import Thread as T
+from dotenv import load_dotenv
 
 app = Flask('sfh-flask')
 app.config['UPLOAD_FOLDER'] = './file_storage'
 
+load_dotenv()
 CORS(app, expose_headers=['foo', 'content-disposition'])
 
 
@@ -29,7 +31,8 @@ def echo_route():
 def check_if_file_exists_route(code: str):
     files = loads(open('./files.json', 'r+').read())
     return jsonify({
-        'result': code in files.keys()
+        'result': code in files.keys(),
+        'expires_at': files.get(code, {}).get('expires_at', 0)
     })
 
 
@@ -85,7 +88,6 @@ def check_file_expirations():
             open('./files.json', 'w+').write(dumps(files_json, indent=4))
         sleep(5)
 
-background_thread = T(name='bg', target=check_file_expirations)
-background_thread.start()
 
-app.run(debug=True, host='0.0.0.0')
+background_thread = T(name='bg', target=check_file_expirations, daemon=True)
+background_thread.start()

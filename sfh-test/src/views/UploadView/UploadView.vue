@@ -27,7 +27,7 @@
 </template>
 <script>
 import '../../assets/global.css';
-import axios from 'axios';
+import axiosClient from '@/axiosClient.js';
 
 export default {
     data() {
@@ -45,8 +45,9 @@ export default {
         attemptFileUpload() {
             const formData = new FormData();
             formData.append("file", this.uploadedFile);
-            formData.append("lifetime", this.fileLifetime)
-            axios.post('https://'+process.env.VUE_APP_API_ROOT+":5000"+"/upload_file", formData, {
+            formData.append("lifetime", this.fileLifetime);
+            process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+            axiosClient.post("/upload_file", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -54,7 +55,7 @@ export default {
                 this.uploadToServerCompleted = true;
                 this.filecode = resp.data;
             }).catch((err) => {
-                this.$root.error(err.message)
+                this.$root.error(err.message);
             });
         },
         uploadFormSubmitHandler(e) {
