@@ -82,7 +82,6 @@ def check_file_expirations():
                 except FileNotFoundError:
                     print('file '+code+' not found')
                 filecodes_to_remove_from_json.append(code)
-                print('file '+code+' was deleted due to expiration.')
         for code in filecodes_to_remove_from_json:
             files_json.pop(code)
             open('./files.json', 'w+').write(dumps(files_json, indent=4))
