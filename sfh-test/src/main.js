@@ -4,6 +4,7 @@ import MainView from './views/MainView/MainView.vue';
 import UploadView from './views/UploadView/UploadView.vue';
 import DownloadView from './views/DownloadView/DownloadView.vue';
 import ErrorView from './views/ErrorView/ErrorView.vue';
+import GuideView from './views/GuideView/GuideView.vue';
 import {createRouter, createWebHistory} from 'vue-router';
 
 const router = createRouter({
@@ -30,6 +31,11 @@ const router = createRouter({
             name: 'error',
             component: ErrorView,
             props: route => ({ errorText: route.query.text })
+        },
+        {
+            path: '/guide',
+            name: 'guide',
+            component: GuideView
         }
     ]
 })

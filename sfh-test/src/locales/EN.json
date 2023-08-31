@@ -7,5 +7,14 @@
     "fileNotFound": "The file was not found",
     "fileFound": "The file was found successfully",
     "noFileUploaded": "No file uploaded",
-    "fileCode": "File code"
+    "fileCode": "File code",
+    "fileLifetime": "File lifetime",
+    "min": "minute",
+    "mins": "minutes",
+    "sec": "second",
+    "secs": "seconds",
+    "hour": "hour",
+    "hours1": "hours",
+    "hours2": "hours",
+    "guide": "Guide"
 }

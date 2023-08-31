@@ -1,7 +1,8 @@
 <template>
   <div class="app-container">
     <header>
-      <h1 style="width: 96px; display: inline-block; color: rgba(255, 0, 76, 0.842); cursor: pointer;" @click="$router.push({'name': 'main'})">SFH</h1>
+      <h1 class="header-title" @click="$router.push({'name': 'main'})">SFH</h1>
+      <h1 class="header-guide-link" @click="$router.push({'name': 'guide'})">{{ l('guide') }}</h1>
       <select id="locale-select" v-model="locale">
         <option value="EN">{{ l('EN') }}</option>
         <option value="RU">{{ l('RU') }}</option>
@@ -41,6 +42,12 @@ export default {
 <style>
 #locale-select {
   height: 32px;
+}
+.header-title {
+  width: 96px; 
+  display: inline-block; color: 
+  rgba(255, 0, 76, 0.842); 
+  cursor: pointer;
 }
 .app-container {
   display: flex;
