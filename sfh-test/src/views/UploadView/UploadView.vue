@@ -2,8 +2,8 @@
     <div class="container upload-container">
         <form class="upload-form" @submit="uploadFormSubmitHandler">
             <input type="file" name="" id="file-input" style="display: none!important;" @change="fileInputChangeHandler">
-            <label for="file-input">
-                <h3>{{ $root.l('uploadAFile') }}</h3>
+            <label for="file-input" :class="{'bg-green': uploadedFile}">
+                <h3>{{ !uploadedFile ? $root.l('uploadAFile') : $root.l('fileSelected') }}</h3>
                 <h4 style="color: red" :class="{'green-text': uploadedFile!==undefined, 'filename': true}">
                     {{ uploadedFile ? uploadedFile.name : $root.l('noFileUploaded') }}
                 </h4>
@@ -11,18 +11,23 @@
             <div class="lifetime-select-container">
                 <label for="fileLifetime">{{ $root.l('fileLifetime') }}</label>
                 <select id="fileLifetime" v-model="fileLifetime">
-                    <option value="30">30 {{ $root.l('seconds') }}</option>
-                    <option value="60">1 {{ $root.l('minute') }}</option>
-                    <option value="300">5 {{ $root.l('minutes') }}</option>
-                    <option value="600">10 {{ $root.l('minutes') }}</option>
-                    <option value="1800">30 {{ $root.l('minutes') }}</option>
+                    <option value="30">30 {{ $root.l('secs') }}</option>
+                    <option value="60">1 {{ $root.l('min') }}</option>
+                    <option value="300">5 {{ $root.l('mins') }}</option>
+                    <option value="600">10 {{ $root.l('mins') }}</option>
+                    <option value="1800">30 {{ $root.l('mins') }}</option>
                     <option value="3600">1 {{ $root.l('hour') }}</option>
-                    <option value="43200">12 {{ $root.l('hours') }}</option>
+                    <option value="43200">12 {{ $root.l('hours2') }}</option>
                 </select>
             </div>
             <input type="submit" :value="$root.l('attemptUpload')" class="attempt-upload-button">
         </form>
-        <h1 id="filecode" v-if="uploadToServerCompleted">{{ filecode }}</h1>
+        <div :class="{'render-after-complete': true, opacity0: !uploadToServerCompleted}">
+            <h1 id="filecode">{{ filecode }}</h1>
+            <input type="button" :value="$root.l('toDownloadPage')"
+                @click="$router.push({ name: 'download', params: {'code': this.filecode} })"
+                :class="{'redirect-button': true, 'display-none': !uploadToServerCompleted}">
+        </div>
     </div>
 </template>
 <script>

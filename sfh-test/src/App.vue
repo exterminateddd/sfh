@@ -2,7 +2,7 @@
   <div class="app-container">
     <header>
       <h1 class="header-title" @click="$router.push({'name': 'main'})">SFH</h1>
-      <h1 class="header-guide-link" @click="$router.push({'name': 'guide'})">{{ l('guide') }}</h1>
+      <h1 class="header-guide-link" @click="$router.push({'name': 'guide'})" v-if="['main'].includes($route.name)">{{ l('guide') }}</h1>
       <select id="locale-select" v-model="locale">
         <option value="EN">{{ l('EN') }}</option>
         <option value="RU">{{ l('RU') }}</option>

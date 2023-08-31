@@ -8,6 +8,35 @@ label[for=file-input] {
     justify-content: space-around;
     align-items: center;
 }
+.bg-green {
+    background-color: #66ff0070!important;
+}
+
+.redirect-button {
+    width: 300px;
+    height: 100%;
+}
+
+.render-after-complete {
+    width: 50%;
+    transition: opacity 0.3s linear;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    margin-top: 8px;
+}
+@media screen and (max-width: 500px) {
+    .render-after-complete {
+        width: 100%;
+        flex-direction: column;
+        height: auto;
+    }
+    .redirect-button {
+        width: 100%;
+        padding: 12px 0;
+    }
+}
 
 .upload-container {
     display: flex;

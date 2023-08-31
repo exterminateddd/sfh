@@ -1,1 +1,20 @@
-{}
+{
+    "GKJTDM": {
+        "uploaded_at": 1693488062.9746776,
+        "expires_at": 1693488662.9746776,
+        "extension": "jpg",
+        "mimetype": "image/jpeg"
+    },
+    "HAUDAO": {
+        "uploaded_at": 1693488333.9235406,
+        "expires_at": 1693488933.9235406,
+        "extension": "jpg",
+        "mimetype": "image/jpeg"
+    },
+    "DTCPIB": {
+        "uploaded_at": 1693488373.5991163,
+        "expires_at": 1693488973.5991163,
+        "extension": "jpg",
+        "mimetype": "image/jpeg"
+    }
+}

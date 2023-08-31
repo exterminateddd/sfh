@@ -16,5 +16,7 @@
     "hour": "hour",
     "hours1": "hours",
     "hours2": "hours",
-    "guide": "Guide"
+    "guide": "Guide",
+    "fileSelected": "File selected",
+    "toDownloadPage": "To download page"
 }
