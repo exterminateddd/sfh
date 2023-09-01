@@ -8,6 +8,7 @@
 .download-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: initial;
     align-items: center;
+    height: fit-content;
 }

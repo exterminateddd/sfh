@@ -20,13 +20,16 @@
                     <option value="43200">12 {{ $root.l('hours2') }}</option>
                 </select>
             </div>
-            <input type="submit" :value="$root.l('attemptUpload')" class="attempt-upload-button">
+            <input type="submit" :value="$root.l('attemptUpload')" :class="{'attempt-upload-button': true, 'button-unclickable': !uploadedFile}" :disabled="!uploadedFile">
         </form>
         <div :class="{'render-after-complete': true, opacity0: !uploadToServerCompleted}">
             <h1 id="filecode">{{ filecode }}</h1>
             <input type="button" :value="$root.l('toDownloadPage')"
                 @click="$router.push({ name: 'download', params: {'code': this.filecode} })"
                 :class="{'redirect-button': true, 'display-none': !uploadToServerCompleted}">
+                <input type="button" :value="$root.l('copyCode')"
+                @click="attemptCodeCopy()"
+                :class="{'copy-button': true, 'display-none': !uploadToServerCompleted}">
         </div>
     </div>
 </template>
@@ -48,6 +51,9 @@ export default {
             this.uploadedFile = e.target.files[0];
         },
         attemptFileUpload() {
+            if (!this.uploadedFile || !this.fileLifetime) {
+                return
+            }
             const formData = new FormData();
             formData.append("file", this.uploadedFile);
             formData.append("lifetime", this.fileLifetime);
@@ -66,6 +72,9 @@ export default {
         uploadFormSubmitHandler(e) {
             e.preventDefault();
             this.attemptFileUpload();
+        },
+        attemptCodeCopy() {
+            alert("doesn't work yet")   
         }
     }
 }

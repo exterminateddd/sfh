@@ -41,3 +41,9 @@ option {
 .display-none {
     display: none;
 }
+.button-unclickable {
+    border: 3px dashed rgba(0, 0, 0, 0.63);
+    background: #0000007c;
+    color: white;
+    cursor: not-allowed;
+}
