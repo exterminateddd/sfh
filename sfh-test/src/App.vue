@@ -10,6 +10,7 @@
     <router-view></router-view>
     <footer>
       <h1 class="footer-guide-link" @click="$router.push({'name': 'guide'})" v-if="['main'].includes($route.name)">{{ l('guide') }}</h1>
+      <h1>{{ appVersion }}</h1>
     </footer>
   </div>
   
@@ -18,12 +19,19 @@
 <script>
 import {RouterView} from 'vue-router';
 import './assets/global.css';
+import packageJson from './../package.json'
 
 export default {
   name: 'App',
   data() {
     return {
       locale: 'RU'
+    }
+  },
+  computed: {
+    appVersion() {
+      console.log(packageJson);
+      return packageJson ? packageJson.version : this.appVersion;
     }
   },
   methods: {
