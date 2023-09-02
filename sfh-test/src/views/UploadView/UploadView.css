@@ -7,6 +7,7 @@ label[for=file-input] {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    box-sizing: border-box;
 }
 .bg-green {
     background-color: #66ff0070!important;
@@ -81,4 +82,7 @@ label[for=file-input] {
     display: flex;
     justify-content: space-between;
     font-size: large;
+}
+.border-dashed {
+    border: 3px dashed grey;
 }

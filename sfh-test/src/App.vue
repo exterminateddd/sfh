@@ -19,7 +19,7 @@
 <script>
 import {RouterView} from 'vue-router';
 import './assets/global.css';
-import packageJson from './../package.json'
+import packageJson from './../package.json';
 
 export default {
   name: 'App',
@@ -30,8 +30,7 @@ export default {
   },
   computed: {
     appVersion() {
-      console.log(packageJson);
-      return packageJson ? packageJson.version : this.appVersion;
+      return packageJson ? packageJson.version : '1.0.0';
     }
   },
   methods: {

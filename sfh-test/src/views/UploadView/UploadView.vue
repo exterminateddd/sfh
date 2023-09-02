@@ -1,12 +1,16 @@
 <template>
     <div class="container upload-container">
         <form class="upload-form" @submit="uploadFormSubmitHandler">
-            <input type="file" name="" id="file-input" style="display: none!important;" @change="fileInputChangeHandler">
-            <label for="file-input" :class="{'bg-green': uploadedFile}">
-                <h3>{{ !uploadedFile ? $root.l('uploadAFile') : $root.l('fileSelected') }}</h3>
-                <h4 style="color: red" :class="{'green-text': uploadedFile!==undefined, 'filename': true}">
-                    {{ uploadedFile ? uploadedFile.name : $root.l('noFileUploaded') }}
-                </h4>
+            <input type="file" name="" id="file-input" style="display: none!important;" @change="fileInputChangeHandler" ref="fileInput">
+            <label for="file-input" :class="{'bg-green': uploadedFile, 'border-dashed': dragOver}" 
+                @dragenter="(e) => {dragOver=true, e.preventDefault()}" 
+                @dragover="(e) => {dragOver=true, e.preventDefault()}" 
+                @dragleave="(e) => {dragOver=false, e.preventDefault()}" 
+                @drop="(e) => {e.preventDefault(); dragOver=false; processDropEvent(e);}">
+                    <h3>{{ !uploadedFile ? $root.l('uploadAFile') : $root.l('fileSelected') }}</h3>
+                    <h4 style="color: red" :class="{'green-text': uploadedFile!==undefined, 'filename': true}">
+                        {{ uploadedFile ? uploadedFile.name : $root.l('noFileUploaded') }}
+                    </h4>
             </label>
             <div class="lifetime-select-container">
                 <label for="fileLifetime">{{ $root.l('fileLifetime') }}</label>
@@ -43,7 +47,8 @@ export default {
             uploadedFile: undefined,
             uploadToServerCompleted: false,
             fileLifetime: 600,
-            filecode: '?/?/?/'
+            filecode: 'ABCDEF',
+            dragOver: false
         }
     },
     methods: {
@@ -75,6 +80,10 @@ export default {
         },
         attemptCodeCopy() {
             alert("doesn't work yet")   
+        },
+        processDropEvent(e) {
+            this.$refs.fileInput.files = e.dataTransfer.files
+            this.$refs.fileInput.dispatchEvent(new Event("change"));
         }
     }
 }
