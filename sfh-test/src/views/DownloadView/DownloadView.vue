@@ -24,15 +24,14 @@ export default {
     },
     methods: {
         checkIfFileExists() {
-            console.log('checking if file with code ' + this.$route.params.code + ' exists')
             axiosClient.get('/check_if_file_exists/'+this.$route.params.code).then((resp) => {
                 this.isCheckFinished = true;
                 this.fileExists = resp.data.result;
-                this.expirationTimestamp = new Date(resp.data.expires_at*1000)
+                this.expirationTimestamp = new Date(resp.data.expires_at*1000);
+                if (this.fileExists) {
+                    this.updateTime()
+                }
             }).catch(() => {})
-            if (this.fileExists) {
-                this.updateTime()
-            }
         },
         attemptDownload() {
             if (!this.fileExists) {
