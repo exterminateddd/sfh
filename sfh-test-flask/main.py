@@ -5,13 +5,11 @@ from random import randint
 from os import path, remove, getenv
 from time import time, sleep
 from threading import Thread as T
-from dotenv import load_dotenv
 
 app = Flask('sfh-flask')
 app.config['UPLOAD_FOLDER'] = './file_storage'
 
-load_dotenv()
-CORS(app, expose_headers=['foo', 'content-disposition'])
+CORS(app, expose_headers=['content-disposition'])
 
 
 def generate_filecode():
