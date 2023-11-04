@@ -30,7 +30,7 @@ const router = createRouter({
             path: '/error',
             name: 'error',
             component: ErrorView,
-            props: route => ({ errorText: route.query.text })
+            props: route => ({ errorText: route.query.text, errorCode: route.query.code })
         },
         {
             path: '/guide',

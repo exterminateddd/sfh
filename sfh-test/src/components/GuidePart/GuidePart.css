@@ -1,0 +1,43 @@
+.part-left {
+    font-size: 96px;
+}
+.part-right {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left!important;
+}
+/* .part-left, .part-right {
+    border-bottom: 1px dashed black;
+} */
+.clickable {
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+.clickable:hover {
+    color: blueviolet;
+}
+.reverse {
+    flex-direction: row-reverse;
+}
+@media screen and (max-width: 500px) {
+    .guide-part-container {
+        flex-direction: row;
+    }
+    .reverse {
+        flex-direction: row;
+    }
+    .part-left {
+        font-size: 64px;
+        width: 30%;
+    }
+    .part-right {
+        width: 70%;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        justify-content: start;
+    }
+}

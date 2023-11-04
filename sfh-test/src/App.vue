@@ -38,8 +38,8 @@ export default {
       const localeJson = require('./locales/'+this.locale+'.json');
       return !(translationCode in localeJson) ? '#'+translationCode : localeJson[translationCode];
     },
-    error(errorText) {
-      this.$router.push({ name: 'error', query: { text: errorText } })
+    error(errorText, errorCode) {
+      this.$router.push({ name: 'error', query: { text: errorText, code: errorCode } })
     }
   },
   components: {

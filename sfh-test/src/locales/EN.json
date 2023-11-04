@@ -18,5 +18,12 @@
     "hours2": "hours",
     "guide": "Guide",
     "fileSelected": "File selected",
-    "toDownloadPage": "To download page"
+    "toDownloadPage": "To download page",
+    "guide1": "Go to the upload page",
+    "guide2": "Choose a file",
+    "guide3": "Choose the lifetime for your file",
+    "guide4": "Press «Upload»",
+    "guideHeader": "— So how do I use SFH?",
+    "guideHeaderSub": "— It's really simple",
+    "errorSub": "Try again later or contact user support"
 }

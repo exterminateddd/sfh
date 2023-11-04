@@ -9,7 +9,7 @@
             <div class="upload-section">
                 <h1> {{ $root.l('uploadAFile') }} </h1>
                 <router-link to="/upload">
-                    <input type="button" :value="$root.l('proceed')" class="upload-button" >
+                    <input type="button" :value="$root.l('uploadAFile')" class="upload-button" >
                 </router-link>
             </div>
         </div>

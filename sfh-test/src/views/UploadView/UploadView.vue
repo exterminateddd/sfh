@@ -71,7 +71,7 @@ export default {
                 this.uploadToServerCompleted = true;
                 this.filecode = resp.data;
             }).catch((err) => {
-                this.$root.error(err.message);
+                this.$root.error(err.message, err.code);
             });
         },
         uploadFormSubmitHandler(e) {
