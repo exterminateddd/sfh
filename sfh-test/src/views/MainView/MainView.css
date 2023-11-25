@@ -41,5 +41,6 @@
     }
     footer {
         transform: translateY(-50px);
+        z-index: -1;
     }
 }
