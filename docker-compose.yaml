@@ -1,0 +1,27 @@
+version: '1.0'
+
+services:
+  sfh:
+    container_name: sfh-c
+    build:
+      context: ./sfh-test
+      dockerfile: Dockerfile
+    expose:
+      - "8080:8080"
+    networks:
+      - sfh-nw
+
+  sfh-flask:
+    container_name: sfh-flask-c
+    build:
+      context: ./sfh-test-flask
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    networks:
+      - sfh-nw
+
+networks:
+  sfh-nw:
+    driver: bridge
+    external: true

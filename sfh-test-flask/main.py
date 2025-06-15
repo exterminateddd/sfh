@@ -87,4 +87,6 @@ def check_file_expirations():
 
 
 background_thread = T(name='bg', target=check_file_expirations, daemon=True)
-background_thread.start()
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
+    background_thread.start()
